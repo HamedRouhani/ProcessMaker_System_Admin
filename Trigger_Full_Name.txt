@@ -1,0 +1,2 @@
+$aUser = userInfo(@@USER_LOGGED);
+@@txt_name = $aUser['firstname'].' '. $aUser['lastname'];

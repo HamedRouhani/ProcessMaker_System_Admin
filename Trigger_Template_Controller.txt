@@ -1,0 +1,58 @@
+$Registered_By_USR_UID = @@ExecuteID;
+$Pre_Confirmed_By_USR_UID = @@PreConfirmID;
+$Confirmed_By_USR_UID = @@ConfirmID;
+$Requested_By_USR_UID = @@RequestID;
+$Final_Confirmed_By_USR_UID = @@FinalConfirmID;
+
+$Time_Stamp = @@Time_Stamp;
+
+$CurrentYear = @@CurrentYear;
+$Request_Code = @@Request_Code;
+$Subject_Code = @@Subject_Code;
+$Subject_Temp = @@Subject_Temp;
+$Final_Confirm = @@Final_Confirm;
+
+
+if (@@Reg_Type == '5' and @@Final_Confirm == '1'){
+
+$IsDelete = 1;
+$IsActive = 0;	
+	
+$Subsql_Update = "UPDATE PMT_TB120022 SET 
+IsDelete = '$IsDelete',
+IsActive = '$IsActive' 
+WHERE Subject_Code ='$Subject_Code' and IsActive = '1'";
+	
+	executeQuery ($Subsql_Update);
+	
+$IsDelete = 0;
+$IsActive = 1;	
+
+$Subsql_Insert = "INSERT INTO PMT_TB120022 
+(Registered_By_USR_UID,
+Pre_Confirmed_By_USR_UID,
+Confirmed_By_USR_UID,
+Requested_By_USR_UID,
+Final_Confirmed_By_USR_UID,
+Time_Stamp,
+IsDelete,
+IsActive,
+Subject_Code,
+Subject_Temp,
+Request_Code)
+		
+		VALUES ('$Registered_By_USR_UID',
+		'$Pre_Confirmed_By_USR_UID',
+		'$Confirmed_By_USR_UID',
+		'$Requested_By_USR_UID',
+		'$Final_Confirmed_By_USR_UID',
+		'$Time_Stamp',
+		'$IsDelete',
+		'$IsActive',
+		'$Subject_Code',
+		'$Subject_Temp',
+		'$Request_Code')";
+		
+	executeQuery ($Subsql_Insert);
+	
+}

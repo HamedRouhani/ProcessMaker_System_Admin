@@ -1,0 +1,2 @@
+$aID = executeQuery("SELECT THIS_YEAR as C FROM PMT_TB100003 WHERE IsDelete = 0");
+@@CurrentYear = $aID[1]['C'];

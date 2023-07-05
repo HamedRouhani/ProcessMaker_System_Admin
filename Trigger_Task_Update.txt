@@ -1,0 +1,54 @@
+$Registered_By_USR_UID = @@ExecuteID;
+$Pre_Confirmed_By_USR_UID = @@PreConfirmID;
+$Confirmed_By_USR_UID = @@ConfirmID;
+$Requested_By_USR_UID = @@RequestID;
+$Final_Confirmed_By_USR_UID = @@FinalConfirmID;
+
+$Time_Stamp = @@Time_Stamp;
+
+$Request_Description = @@Request_Description;
+$Subject_Code = @@Subject_Code;
+$Subject_Title = @@Subject_Title;
+$Status_Code = @@Status_Code;
+$Status_Title = @@Status_Title;
+$Org_Code = @@Org_Code;
+$ORG_Name = @@ORG_Name;
+$Pre_Confirm = @@Pre_Confirm;
+$Confirm = @@Confirm;
+$Reg_Type = @@Reg_Type;
+$Final_Confirm = @@Final_Confirm;
+
+$Request_Code = @@Request_Code;
+
+if (@@Reg_Type == '6'){
+	
+	$Work_Order_Status = 1;
+
+} else {
+	
+	$Work_Order_Status = 0;
+	
+}
+
+$Task_Update = "UPDATE PMT_TB110009 SET 
+Registered_By_USR_UID = '$Registered_By_USR_UID',
+Pre_Confirmed_By_USR_UID = '$Pre_Confirmed_By_USR_UID',
+Confirmed_By_USR_UID = '$Confirmed_By_USR_UID',
+Requested_By_USR_UID = '$Requested_By_USR_UID',
+Final_Confirmed_By_USR_UID = '$Final_Confirmed_By_USR_UID',
+Time_Stamp = '$Time_Stamp',
+Request_Description = '$Request_Description',
+Subject_Code = '$Subject_Code',
+Subject_Title = '$Subject_Title',
+Work_Order_Status = '$Work_Order_Status',
+Org_Code = '$Org_Code',
+ORG_Name = '$ORG_Name',
+Status_Code = '$Status_Code',
+Status_Title = '$Status_Title',
+Pre_Confirm = '$Pre_Confirm',
+Confirm = '$Confirm',
+Reg_Type = '$Reg_Type',
+Final_Confirm = '$Final_Confirm' 
+WHERE Request_Code ='$Request_Code'";
+	
+	executeQuery ($Task_Update);

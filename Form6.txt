@@ -1,0 +1,70 @@
+//‰„«Ì‘ ’›ÕÂ
+$("#dyn_backward").hide();
+$("img[src='/images/bulletButtonLeft.gif']").hide();
+$("#dyn_forward").hide();
+$("img[src='/images/bulletButton.gif']").hide();
+
+$("#11160278363ea134edf78f3072482782").css({"backgroundColor":"#ccccff"});
+$("#11160278363ea134edf78f3072482782").css({"border":"3px double #336699"});
+
+
+$("#title0000000001").css({"font-family":"b titr","color":"#ffffff","background-color":"#336699","border-radius":"5px"});
+$("#title0000000001").css({"text-align":"center"});
+
+$("#subtitle0000000001").css({"font-family":"b titr","color":"#ffffff","background-color":"#7a3969","border-radius":"5px"});
+$("#subtitle0000000001").css({"text-align":"center"});
+
+$("#subtitle0000000002").css({"font-family":"b titr","color":"#ffffff","background-color":"#7a3969","border-radius":"5px"});
+$("#subtitle0000000002").css({"text-align":"center"});
+
+$("#Description").css({"font-family":"b Titr","background-color":"#ff9966","border-radius":"5px"});
+
+$('#Reg_Type').getControl().css("border", "#ffcccc");
+
+$("#submit0000000001").css({"font-family":"b titr","margin-top":"20px"});
+
+$("#CurrentYear").hide();
+$("#Subject_Temp").hide();
+$("#Reg_Type").hide();
+$("#Final_Confirm").hide();
+
+//Å— ﬂ—œ‰ ‘—Õ Ê  Ê÷ÌÕ«   --- 
+
+if ($("#Description").getNumberRows() == 1 && $("#Description").getValue (1,1) =="") {
+	$('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',true);
+  	$("#Description").setValue($("#txt_name").getValue(),$("#Description").getNumberRows(),'1');
+  }else{
+	$("#Description").addRow();
+	$('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',true); 
+    $("#Description").setValue($("#txt_name").getValue(),$("#Description").getNumberRows(),'1');
+  }
+
+$("#Description").setValue("‰ ÌÃÂ «ﬁœ«„ «‰Ã«„ ‘œÂ œ— Œ’Ê’ œ—ŒÊ«” ° „·«ÕŸÂ ê—œÌœ.",$("#Description").getNumberRows(),'2');
+$('#Description').getControl($("#Description").getNumberRows(),'2').css("background-Color", "#b3ffcc");
+
+// Å— ﬂ—œ‰ ›Ì·œ «ﬁœ«„ «‰Ã«„ ‘œÂ
+
+$("#Reg_Type_Text").setValue($("#Reg_Type").getText());
+
+if ($("#Reg_Type").getValue() == 5) {
+  
+  $("#Subject_Temp").show();
+  
+} else {
+  
+  $("#Subject_Temp").hide();
+  
+};
+
+// Å—ò—œ‰ ›Ì·œ  ’„Ì„ „œÌ—
+var FCT = "";
+
+$("#Final_Confirm_Text").setValue($("#Final_Confirm").getText());
+
+FTC = $("#Final_Confirm_Text").getValue();
+
+if (FTC == "") {
+  
+  $("#Final_Confirm_Text").setValue("„œÌ— ”Ì” „ œ— «Ì‰  ’„Ì„ ‰ﬁ‘Ì ‰œ«‘ Â «” .");
+  
+}

@@ -1,0 +1,11 @@
+$CurrentYear = @@CurrentYear;
+$aID = executeQuery("SELECT 
+CASE 
+ WHEN (COUNT(ID)+1 < 10) THEN concat('000',(COUNT(ID)+1))
+ WHEN (COUNT(ID)+1 > 9 AND COUNT(ID)+1 < 100) THEN concat('00',(COUNT(ID)+1))
+ WHEN (COUNT(ID)+1 > 99 AND COUNT(ID)+1 < 1000) THEN concat('0',(COUNT(ID)+1))
+ WHEN (COUNT(ID)+1 > 999) THEN concat(COUNT(ID)+1)
+END as C
+			 FROM PMT_TB110009
+			 WHERE CurrentYear = '$CurrentYear'");
+@@Admin_Master_Counter = $aID[1]['C'];

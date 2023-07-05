@@ -1,0 +1,2 @@
+$aID = executeQuery("SELECT Year_Code as C FROM PMT_TB100003 WHERE IsDelete = 0");
+@@Year_Code = $aID[1]['C'];

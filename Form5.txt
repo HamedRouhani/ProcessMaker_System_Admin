@@ -1,0 +1,117 @@
+//‰„«Ì‘ ’›ÕÂ
+$("#dyn_backward").hide();
+$("img[src='/images/bulletButtonLeft.gif']").hide();
+$("#dyn_forward").hide();
+$("img[src='/images/bulletButton.gif']").hide();
+
+$("#85159301763e9ec6050cbb2023960097").css({"backgroundColor":"#ccccff"});
+$("#85159301763e9ec6050cbb2023960097").css({"border":"3px double #336699"});
+
+
+$("#title0000000001").css({"font-family":"b titr","color":"#ffffff","background-color":"#336699","border-radius":"5px"});
+$("#title0000000001").css({"text-align":"center"});
+
+$("#subtitle0000000001").css({"font-family":"b titr","color":"#ffffff","background-color":"#7a3969","border-radius":"5px"});
+$("#subtitle0000000001").css({"text-align":"center"});
+
+$("#subtitle0000000002").css({"font-family":"b titr","color":"#ffffff","background-color":"#7a3969","border-radius":"5px"});
+$("#subtitle0000000002").css({"text-align":"center"});
+
+$("#Description").css({"font-family":"b Titr","background-color":"#ff9966","border-radius":"5px"});
+
+$('#Reg_Type').getControl().css("border", "#ffcccc");
+
+$("#submit0000000001").css({"font-family":"b titr","margin-top":"20px"});
+
+$("#submit0000000001").hide();
+$("#CurrentYear").hide();
+$("#Subject_Temp").hide();
+$("#Reg_Type").hide();
+$("#Status_Code").hide();
+$("#Status_Title").hide();
+
+$("#Status_Code").setValue("141");
+$("#Status_Title").setValue(" ’œÌﬁ «ÿ·«⁄«  _  ÷„Ì‰ ﬂÌ›Ì ");
+
+//Å— ﬂ—œ‰ ‘—Õ Ê  Ê÷ÌÕ«   --- 
+
+if ($("#Description").getNumberRows() == 1 && $("#Description").getValue (1,1) =="") {
+	$('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',true);
+  	$("#Description").setValue($("#txt_name").getValue(),$("#Description").getNumberRows(),'1');
+  }else{
+	$("#Description").addRow();
+	$('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',true); 
+    $("#Description").setValue($("#txt_name").getValue(),$("#Description").getNumberRows(),'1');
+  }
+
+$("#Description").setValue("«ÿ·«⁄«  „Ê—œ  «ÌÌœ «” .",$("#Description").getNumberRows(),'2');
+$('#Description').getControl($("#Description").getNumberRows(),'2').css("background-Color", "#b3ffcc");
+
+// Å— ﬂ—œ‰ ›Ì·œ «ﬁœ«„ «‰Ã«„ ‘œÂ
+
+$("#Reg_Type_Text").setValue($("#Reg_Type").getText());
+
+if ($("#Reg_Type").getValue() == 5) {
+  
+  $("#Subject_Temp").show();
+  
+} else {
+  
+  $("#Subject_Temp").hide();
+  
+}
+
+//  ⁄ÌÌ‰ Ê÷⁄Ì  «—”«·
+
+$("#85159301763e9ec6050cbb2023960097").setOnchange(function(D){
+  
+  D = $("#Description").getValue($("#Description").getNumberRows(),'2');
+       
+  if (D != "") {
+    
+    $('#Description').getControl($("#Description").getNumberRows(),'2').css("background-Color", "#b3ffcc");
+    $("#submit0000000001").show();
+    
+  } else {
+    
+    $('#Description').getControl($("#Description").getNumberRows(),'2').css("background-Color", "#ffcccc");
+    $("#submit0000000001").hide();
+    
+  }
+
+});
+
+// ‰ ÌÃÂ «ﬁœ«„
+
+$("#Final_Confirm").setOnchange(function(C){
+  
+  C = $("#Final_Confirm").getValue(); 
+  
+  switch (true) {
+      
+    case (C == 1):
+      $("#Description").setValue("«ÿ·«⁄«  „Ê—œ  «ÌÌœ «” .",$("#Description").getNumberRows(),'2');
+      $('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',true);
+      $("#Status_Code").setValue("141");
+      $("#Status_Title").setValue(" ’œÌﬁ «ÿ·«⁄«  _  ÷„Ì‰ ﬂÌ›Ì ");
+      break;
+      
+    case (C == 2):
+      $("#Description").setValue("",$("#Description").getNumberRows(),'2');
+      $('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',false);
+      alert ("⁄·  —œ œ—ŒÊ«”  —«  Ê÷ÌÕ œÂÌœ");
+      $("#Status_Code").setValue("140");
+      $("#Status_Title").setValue("⁄œ„  ’œÌﬁ «ÿ·«⁄«  _  ÷„Ì‰ ﬂÌ›Ì ");
+      break;      
+      
+    case (C == 3):
+      $("#Description").setValue("",$("#Description").getNumberRows(),'2');
+      $('#Description').getControl($("#Description").getNumberRows(),'2').attr('disabled',false);
+      alert ("«’·«Õ „Ê—œ ‰Ÿ— —«  Ê÷ÌÕ œÂÌœ");
+      $("#Status_Code").setValue("142");
+      $("#Status_Title").setValue("‰Ì«“ »Â «’·«Õ «ÿ·«⁄«  _  ÷„Ì‰ ﬂÌ›Ì ");
+      break;      
+      
+  }
+  
+});

@@ -1,0 +1,60 @@
+$Registered_By_USR_UID = @@ExecuteID;
+$Pre_Confirmed_By_USR_UID = @@PreConfirmID;
+$Confirmed_By_USR_UID = @@ConfirmID;
+$Requested_By_USR_UID = @@RequestID ;
+$Time_Stamp = @@Time_Stamp;
+
+$Request_Description = @@Request_Description;
+$CurrentYear = @@CurrentYear;
+$Request_Code_Temp = @@Request_Code_Temp;
+$Request_Code = @@Request_Code;
+$Subject_Code = @@Subject_Code;
+$Subject_Title = @@Subject_Title;
+$Status_Code = '100';
+$Status_Title = '«ÌÃ«œ ﬂœ œ—ŒÊ«” ';
+$Work_Order_Status = 0;
+$Subject_Temp = @@Subject_Temp;
+$Manager_Decision = @@Confirm;
+
+$IsDelete = 0;
+$IsActive = 1;
+	
+$sql = "INSERT INTO PMT_TB110009 
+(Registered_By_USR_UID,
+Pre_Confirmed_By_USR_UID,
+Confirmed_By_USR_UID,
+Requested_By_USR_UID,
+Time_Stamp,
+IsDelete,
+IsActive,
+Request_Description,
+CurrentYear,
+Request_Code,
+Subject_Code,
+Subject_Title,
+Work_Order_Status,
+Manager_Decision,
+Status_Code,
+Status_Title)
+		
+		VALUES ('$Registered_By_USR_UID',
+		'$Pre_Confirmed_By_USR_UID',
+		'$Confirmed_By_USR_UID',
+		'$Requested_By_USR_UID',
+		'$Time_Stamp',
+		'$IsDelete',
+		'$IsActive',
+		'$Request_Description',
+		'$CurrentYear',
+		'$Request_Code_Temp',
+		'$Subject_Code',
+		'$Subject_Title',
+		'$Work_Order_Status',
+		'$Manager_Decision',
+		'$Status_Code',
+		'$Status_Title')";
+
+$aID = executeQuery("SELECT COUNT(ID) AS R FROM PMT_TB110009 WHERE Request_Code = '$Request_Code'");
+@@R_Counter = $aID[1]['R'];
+
+if ( @@R_Counter == 0) { executeQuery ($sql);@@Request_Code = $Request_Code_Temp; }
